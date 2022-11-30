@@ -1,5 +1,11 @@
-<script></script>
+<script>
+export default {
+  name: "AppHeader",
+};
+</script>
 
-<template></template>
+<template>
+  <header></header>
+</template>
 
 <style lang="scss" scoper></style>

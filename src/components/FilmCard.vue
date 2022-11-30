@@ -1,5 +1,11 @@
-<script></script>
+<script>
+export default {
+  name: "FilmCard",
+};
+</script>
 
-<template></template>
+<template>
+  <section></section>
+</template>
 
 <style lang="scss" scoper></style>
