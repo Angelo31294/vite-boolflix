@@ -17,4 +17,4 @@ export default {
   </main>
 </template>
 
-<style lang="scss" scoper></style>
+<style lang="scss" scoped></style>
