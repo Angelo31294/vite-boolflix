@@ -20,7 +20,7 @@ export default {
   methods: {
     getData() {
       axios
-        .get("https://api.themoviedb.org/3/movie", {
+        .get("https://api.themoviedb.org/3/search/movie", {
           params: {
             api_key: "ac8aa3d4c78c853e54f65926f4229842",
             query: this.store.textSearch,
@@ -28,7 +28,24 @@ export default {
           },
         })
         .then((resp) => {
-          this.store.movie = resp.data.result;
+          this.store.movie = resp.data.results;
+          if (this.error) {
+            this.error = !this.error;
+          }
+        })
+        .catch((err) => {
+          this.error = true;
+        });
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: "ac8aa3d4c78c853e54f65926f4229842",
+            query: this.store.textSearch,
+            language: "it-IT",
+          },
+        })
+        .then((resp) => {
+          this.store.serie = resp.data.results;
           if (this.error) {
             this.error = !this.error;
           }

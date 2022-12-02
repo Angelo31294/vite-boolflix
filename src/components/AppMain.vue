@@ -1,12 +1,10 @@
 <script>
 import { store } from "../store";
 import FilmCard from "./FilmCard.vue";
-import TvSeriesCard from "./TvSeriesCard.vue";
 export default {
   name: "AppMain",
   components: {
     FilmCard,
-    TvSeriesCard,
   },
   data() {
     return {
@@ -18,9 +16,16 @@ export default {
 
 <template>
   <main>
-    <FilmCard v-for="movie in store.movies" :info="movie" />
-    <TvSeriesCard />
+    <FilmCard v-for="movie in store.movie" :info="movie" :show="movie" />
+    <FilmCard v-for="serie in store.serie" :info="serie" :show="serie" />
   </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  padding: 1.25rem;
+}
+</style>
