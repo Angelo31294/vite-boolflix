@@ -28,7 +28,7 @@ export default {
           },
         })
         .then((resp) => {
-          this.store.movies = resp.data.result;
+          this.store.movie = resp.data.result;
           if (this.error) {
             this.error = !this.error;
           }
