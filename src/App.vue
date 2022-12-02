@@ -3,15 +3,18 @@ import axios from "axios";
 import { store } from "./store";
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
+import AppError from "./components/AppError.vue";
 export default {
   name: "App",
   components: {
     AppHeader,
     AppMain,
+    AppError,
   },
   data() {
     return {
       store,
+      error: false,
     };
   },
   methods: {
@@ -25,7 +28,13 @@ export default {
           },
         })
         .then((resp) => {
-          console.log(resp);
+          this.store.movies = resp.data.result;
+          if (this.error) {
+            this.error = !this.error;
+          }
+        })
+        .catch((err) => {
+          this.error = true;
         });
     },
   },
@@ -34,6 +43,7 @@ export default {
 
 <template>
   <AppHeader @performSearch="getData" />
+  <AppError v-if="error" />
   <AppMain />
 </template>
 

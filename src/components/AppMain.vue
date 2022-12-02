@@ -1,4 +1,5 @@
 <script>
+import { store } from "../store";
 import FilmCard from "./FilmCard.vue";
 import TvSeriesCard from "./TvSeriesCard.vue";
 export default {
@@ -7,12 +8,17 @@ export default {
     FilmCard,
     TvSeriesCard,
   },
+  data() {
+    return {
+      store,
+    };
+  },
 };
 </script>
 
 <template>
   <main>
-    <FilmCard />
+    <FilmCard v-for="movie in store.movies" :info="movie" />
     <TvSeriesCard />
   </main>
 </template>
